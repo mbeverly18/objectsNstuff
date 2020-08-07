@@ -6,7 +6,7 @@ const ctx = canvas.getContext('2d');
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
-// function to generate random number //
+// function to generate random number
 
 function random(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -22,7 +22,7 @@ function Ball(x, y, velX, velY, color, size) {
   this.size = size;
 }
 
-// drawing the ball //
+// drawing the ball
 
 Ball.prototype.draw = function () {
   ctx.beginPath();
@@ -31,14 +31,14 @@ Ball.prototype.draw = function () {
   ctx.fill();
 }
 
-// Update the ball's data //
+// Update the ball's data
 
-Ball.prototype.update = function () {
+Ball.prototype.update = function() {
   if ((this.x + this.size) >= width) {
     this.velX = -(this.velX);
   }
 
-  if ((this.x - this.size) <= 0) {
+  if((this.x - this.size) <= 0) {
     this.velX = -(this.velX);
   }
 
@@ -46,7 +46,7 @@ Ball.prototype.update = function () {
     this.velY = -(this.velY);
   }
 
-  if ((this.y - this.size) <= 0) {
+  if((this.y - this.size) <= 0) {
     this.velY = -(this.velY);
   }
 
@@ -54,20 +54,20 @@ Ball.prototype.update = function () {
   this.y += this.velY;
 }
 
-// create space to store and populate balls //
+// Create space to store and populate balls
 
 let balls = [];
 
 while (balls.length < 25) {
   let size = random(10,20);
   let ball = new Ball(
-    //ball position always drawn at least one ball width
-    //away from the edge of the canvas, to avoid drawing errors
+    //ball position alwasys drawn at least one ball width
+    //away from the edge of the canvas, to aviod drawing errors
     random(0 + size, width - size),
     random(0 + size, height - size),
     random(-7,7),
     random(-7,7),
-    'rgb(' + random(0,255) + ',' + random(0,255) + ',' + random(0,255) + ',', 
+    'rgb(' + random(0,255) + ',' + random(0,255) + ',' + random(0,255) + ')',
     size
   );
 
